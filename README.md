@@ -26,3 +26,10 @@ print b
 >>> reduce(lambda x,y:x*y,range(1,4))
 6
 ```
+
+## python中字典排序
+```python
+dict1 = {'3': 'a', '4': 'b', '2': 'z', '5': 'x'}
+sorted(dict1.items(), key=lambda x:x[0]) # sort by key
+sorted(dict1.items(), key=lambda x:x[1]) # sort by value
+```
