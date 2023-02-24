@@ -19,8 +19,8 @@ docker load -i nginx.docker
 
 # django
 
-  python manage.py createsuperuser
-  python manage.py shell -> Group.objects.create(name='GUEST')
+  > python manage.py createsuperuser
+  > python manage.py shell -> Group.objects.create(name='GUEST')
 
   1. runserver 0.0.0.0:8002 PYTHONUNBUFFERED=1;DJANGO_SETTINGS_MODULE=BOSS.settings.dev  # use to determine if dev env
   2. os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BOSS.settings.prd')  in prd_wsgi.py
