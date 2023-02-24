@@ -66,3 +66,116 @@ docker load -i nginx.docker
   14. obj.update will update update_time, filter().update won't
   15. log file:
       http://www.360doc.com/content/14/0708/10/16044571_392797799.shtml
+      
+## react
+    functional component: 
+    filter:
+    const formRef = React.createRef()
+    <Form ref={formRef} name="control-ref">
+    Modal:
+    <Modal>
+    <Form ... initialValues={{ ...item, type: item.type ? config.testplan_type[item.type].name : '' }} >
+
+    1. parse url params:
+       import queryString from 'query-string'
+       location.query = queryString.parse(location.search)
+
+    put onError.js as app.js under src/app.js
+
+    setState没有即时生效: https://www.jianshu.com/p/d6cf4af498db
+
+
+## groovy
+    //switch string to json
+    import groovy.json.JsonSlurper
+    def parser = new JsonSlurper()
+    def res_data = parser.parseText(res)
+
+    // parallel jobs
+    def tasks = [:]
+    tasks["task_1"] = {
+        node('label_example1') {  
+      stage ("task_1"){  
+            sh 'echo $NODE_NAME'
+        }
+      }
+    }
+    tasks["task_2"] = {
+        node('label_example2') {  
+      stage ("task_2"){   
+            sh 'echo $NODE_NAME'
+        }
+      }
+    }
+    parallel tasks
+
+    //str fill 0
+    string.padLeft(2,"0")
+
+    //get substring
+    string.substring(0,len)
+
+    //split
+
+    // get keys of a hashmap
+    dict1.keys()
+
+# deploy
+##  frontend
+    docker run --name test_nginx -p9000:80 -d nginx:1.21
+    docker run --name test_nginx -p9000:443 -d nginx:1.21 # https
+    docker cp dist/* test_nginx:/usr/share/nginx/html
+    docker cp nginx.conf test_nginx:/etc/nginx/conf.d/default.conf
+    nginx file: http
+    server {
+        listen 80;
+      server_name localhost;
+        root /usr/share/nginx/html;
+
+        location ~ ^/.*\.(css|js|svg|png)$ {
+          root /;
+          rewrite ^/(.*)$ /usr/share/nginx/html/$1 break;
+        }
+        location / {
+            index  index.html;
+            try_files $uri $uri/ /index.html;
+        }
+      location ~ /api/v1/ {
+          proxy_pass http://10.157.50.2:8002
+      }
+    }
+    
+ ## nginx: https
+    生成HTTPS证书，可以使用openssl生成服务器RSA密钥及证书，生成的命令如下:
+    openssl genrsa -des3 -out server.key 2048
+    创建签名请求的证书(CSR)，如下:
+    openssl req -new -key server.key -out server.csr
+    加载SSL支持的Nginx并使用私钥时去除口令，如下:
+    cp server.key server.key.bak
+    openssl rsa -in server.key.bak -out server.key
+    自动签发证书，如下:
+    openssl x509 -req -days 10240 -in server.csr -signkey server.key -out server.crt
+    server {
+      listen 443 ssl;
+      server_name localhost;
+        root /usr/share/nginx/html;
+      ssl_certificate      /root/server.crt;  # 这个是证书的crt文件所在目录
+      ssl_certificate_key  /root/server.key; # 这个是证书key文件所在目录
+      ssl_session_cache    shared:SSL:1m;
+      ssl_session_timeout  5m;
+
+      ssl_ciphers  HIGH:!aNULL:!MD5;
+      ssl_prefer_server_ciphers  on;
+
+        location ~ ^/.*\.(css|js|svg|png)$ {
+          root /;
+          rewrite ^/(.*)$ /usr/share/nginx/html/$1 break;
+        }
+        location / {
+            index  index.html;
+            try_files $uri $uri/ /index.html;
+        }
+      location ~ /api/v1/ {
+          proxy_pass http://10.157.50.2:8002
+      }
+    }
