@@ -10,6 +10,10 @@
 ## uv venv
 1. uv venv --python 3.11 venv_py311
 
+## source venv under windows
+1. Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+2. ${venv_path}\activate.ps1
+
 ## uv pip
 1. uv pip install flask
 2. uv pip install -r requirements.txt
