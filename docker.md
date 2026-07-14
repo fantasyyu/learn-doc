@@ -5,6 +5,10 @@
       docker exec -it container_id /bin/bash
       docker run -itd --name xxx  -v /local_path:/dest_path --privileged=true mysql:5.7
 
+## node_exporter
+      doc: https://github.com/prometheus/node_exporter, 
+      https://prometheus.io/docs/guides/node-exporter/ 
+
 ## jenkins docker
     docker run -itd --name myjenkins -p 8080:8080 -p 50000:50000 --restart=always --env JAVA_OPTS="-Dhudson.util.ProcessTree.disable=true" -v /home/artifactory/jenkins_home:/var/jenkins_home -u 1000 --privileged=true jenkins/jenkins:latest
     docker run -itd --name testjenkins -p 7070:8080 -p 50001:50000 --restart=always --env JAVA_OPTS="-Dhudson.util.ProcessTree.disable=true" -v /home/artifactory/test_jenkins_home:/var/jenkins_home -u 1000 --privileged=true jenkins/jenkins:latest
