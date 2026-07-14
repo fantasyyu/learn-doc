@@ -7,7 +7,8 @@
 
 ## node_exporter
       doc: https://github.com/prometheus/node_exporter, 
-      https://prometheus.io/docs/guides/node-exporter/ 
+      https://prometheus.io/docs/guides/node-exporter/ ，
+      https://prometheus.ac.cn/docs/introduction/overview/ 
 
 ## jenkins docker
     docker run -itd --name myjenkins -p 8080:8080 -p 50000:50000 --restart=always --env JAVA_OPTS="-Dhudson.util.ProcessTree.disable=true" -v /home/artifactory/jenkins_home:/var/jenkins_home -u 1000 --privileged=true jenkins/jenkins:latest
