@@ -1,3 +1,6 @@
+## doc
+https://prometheus.ac.cn/docs/introduction/overview/
+
 ## installation node-exporter
     wget https://github.com/prometheus/node_exporter/releases/download/v1.10.2/node_exporter-1.10.2.linux-amd64.tar.gz 
     tar -xvf 
@@ -23,3 +26,8 @@
 
 ## grafana docker
     docker run -d --name grafana -p 3000:3000 ncr.nioint.com/docker.io/grafana/grafana:latest
+    初始登录（admin：admin）
+    Data Sources -> Add Prometheus -> URL -> http://你的PrometheusIP:9090
+    Dashboards -> 1860
+
+
