@@ -1,0 +1,19 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /login                    --> main.main.func1 (4 handlers)
+[GIN-debug] GET    /api/profile              --> main.main.func2 (5 handlers)
+[GIN-debug] GET    /api/admin/dashboard      --> main.main.func3 (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8081
+[GIN] 2026/09/14 - 16:34:03 | 401 |       0s |             ::1 | GET      "/api/profile"
+[GIN] 2026/09/14 - 16:34:03 | 200 |  505.4µs |             ::1 | POST     "/login"
+[GIN] 2026/09/14 - 16:34:03 | 200 |       0s |             ::1 | GET      "/api/profile"
+[GIN] 2026/09/14 - 16:34:04 | 200 |  526.7µs |             ::1 | GET      "/api/admin/dashboard"
+[GIN] 2026/09/14 - 16:34:04 | 200 |       0s |             ::1 | POST     "/login"
+[GIN] 2026/09/14 - 16:34:04 | 403 |  663.8µs |             ::1 | GET      "/api/admin/dashboard"
+[GIN] 2026/09/14 - 16:34:04 | 401 |       0s |             ::1 | GET      "/api/profile"

@@ -1,0 +1,29 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ping                     --> main.main.func1 (4 handlers)
+[GIN-debug] GET    /users/:id                --> main.main.func2 (4 handlers)
+[GIN-debug] GET    /search                   --> main.main.func3 (4 handlers)
+[GIN-debug] POST   /users                    --> main.main.func4 (4 handlers)
+[GIN-debug] GET    /users                    --> main.main.func5 (4 handlers)
+[GIN-debug] GET    /api/v1/info              --> main.main.func6 (4 handlers)
+[GIN-debug] GET    /api/v2/info              --> main.main.func7 (4 handlers)
+[GIN-debug] GET    /files/*filepath          --> main.main.func8 (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2026/09/14 - 16:32:46 | 200 |       0s |             ::1 | GET      "/ping"
+[GIN] 2026/09/14 - 16:32:47 | 200 |       0s |             ::1 | GET      "/users/123"
+[GIN] 2026/09/14 - 16:32:47 | 200 |       0s |             ::1 | GET      "/search?q=golang&page=2"
+[GIN] 2026/09/14 - 16:32:47 | 201 |       0s |             ::1 | POST     "/users"
+[GIN] 2026/09/14 - 16:32:47 | 400 |       0s |             ::1 | POST     "/users"
+[GIN] 2026/09/14 - 16:32:47 | 200 |       0s |             ::1 | GET      "/api/v1/info"
+[GIN] 2026/09/14 - 16:32:47 | 200 |       0s |             ::1 | GET      "/files/a/b/c.txt"
+[GIN] 2026/09/15 - 08:57:49 | 404 |       0s |       127.0.0.1 | GET      "/"
+[GIN] 2026/09/15 - 09:09:01 | 404 |       0s |       127.0.0.1 | GET      "/"
+[GIN] 2026/09/15 - 09:44:28 | 404 |       0s |       127.0.0.1 | GET      "/"
+[GIN] 2026/09/15 - 14:14:50 | 404 |       0s |       127.0.0.1 | GET      "/"
+[GIN] 2026/09/15 - 17:38:34 | 404 |       0s |       127.0.0.1 | GET      "/"

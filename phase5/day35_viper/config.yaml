@@ -1,0 +1,38 @@
+# 服务器配置
+server:
+  port: 8080
+  mode: debug          # debug / release
+
+# 数据库配置
+database:
+  driver: mysql
+  dsn: "root:123456@tcp(127.0.0.1:3306)/godemo?charset=utf8mb4&parseTime=True"
+  max_open_conns: 25
+  max_idle_conns: 10
+
+# Redis 配置
+redis:
+  addr: "127.0.0.1:6379"
+  password: ""
+  db: 0
+
+# JWT 配置
+jwt:
+  secret: "my-secret-key"
+  expire_hours: 2
+
+# 日志配置
+log:
+  level: info          # debug / info / warn / error
+  format: json         # json / text
+
+# 数组和嵌套
+allowed_origins:
+  - "https://example.com"
+  - "https://admin.example.com"
+
+# 嵌套 map
+features:
+  enable_cache: true
+  enable_metrics: false
+  rate_limit: 100
